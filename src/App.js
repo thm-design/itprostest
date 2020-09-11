@@ -1,11 +1,9 @@
-import React, { useState }from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import Flag from "./components/Flag";
 import useCountries from "./Hooks";
 import CountryList from "./components/CountryList";
-
-
 
 import "./App.scss";
 
@@ -13,17 +11,13 @@ export default () => {
   const [data, error] = useCountries();
   return (
     <div className="App">
-      <SearchBar />  {/*      <SearchBar data={data} /> this doesn't work */}
+      <SearchBar /> {/*      <SearchBar data={data} /> this doesn't work */}
       <Header />
       {data &&
         data.map((country) => (
           <div className="CountryList" key={country.name}>
             <Flag flag={country.flag} />
-            <CountryList
-              population={country.population}
-              name={country.name}
-              region={country.region}
-            />
+            <CountryList population={country.population} name={country.name} region={country.region} />
             {country.languages.map((language, languageIndex) => (
               <CountryList key={languageIndex} language={language.name} />
             ))}
@@ -37,9 +31,8 @@ export default () => {
             </div> */}
           </div>
         ))}
-      <useCountries />
+      {/* <useCountries /> */}
     </div>
   );
-  return [data, error]
-}
-
+  // return [data, error]
+};
