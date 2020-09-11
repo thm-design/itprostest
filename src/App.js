@@ -9,19 +9,22 @@ import "./App.scss";
 
 export default () => {
   const [data, error] = useCountries();
+  // console.log({ data });
   return (
     <div className="App">
-      <SearchBar /> {/*      <SearchBar data={data} /> this doesn't work */}
+      <SearchBar data={data} /> {/*      <SearchBar data={data} /> this doesn't work */}
       <Header />
       {data &&
-        data.map((country) => (
-          <div className="CountryList" key={country.name}>
-            <Flag flag={country.flag} />
-            <CountryList population={country.population} name={country.name} region={country.region} />
-            {country.languages.map((language, languageIndex) => (
-              <CountryList key={languageIndex} language={language.name} />
-            ))}
-            {/*  <div className="countryName">{country.name}</div>
+        data.map((country) => {
+          // console.log({ country });
+          return (
+            <div className="CountryList" key={country.name}>
+              <Flag flag={country.flag} />
+              <CountryList population={country.population} name={country.name} region={country.region} />
+              {country.languages.map((language, languageIndex) => (
+                <CountryList key={languageIndex} language={language.name} />
+              ))}
+              {/*  <div className="countryName">{country.name}</div>
             <div className="population">{country.population}</div>
             <div className="region">{country.region}</div>
             <div>
@@ -29,8 +32,9 @@ export default () => {
                 <div key={languageIndex}>{language.name}</div>
               ))}
             </div> */}
-          </div>
-        ))}
+            </div>
+          );
+        })}
       {/* <useCountries /> */}
     </div>
   );

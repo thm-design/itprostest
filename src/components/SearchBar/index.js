@@ -9,26 +9,22 @@ export default function Searchbar({ data }) {
     setSearch(e.target.value);
   }
 
+  const filteredData = (data || []).filter((item) => {
+    // console.log({ item: item.name.toLowerCase(), search: search.toLowerCase() });
+    const dataItem = item.name.toLowerCase();
+    const currentSearch = search ? search.toLowerCase() : null;
+    return dataItem.includes(currentSearch);
+  });
+
+  console.log({ search, data, filteredData });
+
   return (
     <div className="SearchBar">
-      <input
-        className="input"
-        type="text"
-        placeholder="search country ..."
-        value={search}
-        onChange={handleChange}
-      />
-
-     {/* { data?.filter((item) => item.name.toLowerCase().includes(search)).map(element => 
-        <div>{element.name}</div>
-      )} */}
-
-      {data && data.filter((item) => item.name.toLowerCase().includes(search))}
- 
-      {/*  <ul>
-        {data &&
-          data.filter((item) => item.name.toLowerCase().includes(search)).map((e) => <li key={e.name}>{e.name}</li>)}
-      </ul> */}
+      <input className="input" type="text" placeholder="search country ..." value={search} onChange={handleChange} />
+      {filteredData.length &&
+        filteredData.map((item) => {
+          return <div key={item.name}>{item.name}</div>;
+        })}
     </div>
   );
 }
