@@ -1,0 +1,11 @@
+.CountryList{
+    display: grid;
+border-bottom: 1px solid #F1F3F4;
+grid-template-columns:1fr 1fr 1fr 1fr 1fr ;
+margin: 10px;
+align-items: center;
+}
+
+/* .language{
+    display: block;
+} */

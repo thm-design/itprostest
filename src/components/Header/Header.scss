@@ -1,0 +1,13 @@
+.Header{
+display: grid;
+border-bottom: 1px solid #F1F3F4;
+grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+margin: 0px;
+height: 50px;
+line-height: 50px;
+background-color: #3F3E3E;
+}
+
+.Header div{
+    color: honeydew;
+}
