@@ -21,10 +21,9 @@ export default function Searchbar({ data }) {
   return (
     <div className="SearchBar">
       <input className="input" type="text" placeholder="search country ..." value={search} onChange={handleChange} />
-      {filteredData.length &&
-        filteredData.map((item) => {
-          return <div key={item.name}>{item.name}</div>;
-        })}
+      {filteredData.map((item) => {
+        return <div key={item.name}>{item.name}</div>;
+      })}
     </div>
   );
 }
